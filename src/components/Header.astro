@@ -1,0 +1,84 @@
+---
+const navLinks = [
+  { label: 'Início', href: '#hero' },
+  { label: 'Serviços', href: '#servicos' },
+  { label: 'Portfólio', href: '#portfolio' },
+  { label: 'Diferenciais', href: '#diferenciais' },
+  { label: 'Contato', href: '#contato' },
+];
+const WA_LINK = 'https://wa.me/5500000000000?text=Olá! Gostaria de solicitar um orçamento.';
+---
+
+<header class="fixed top-0 inset-x-0 z-50 transition-all duration-300" id="site-header">
+  <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+    <a href="#hero" class="font-bold text-base tracking-tight text-zinc-100">
+      Victor Feitosa <span class="text-purple-400 font-mono">|</span> Dev
+    </a>
+
+    <nav class="hidden md:flex items-center gap-6">
+      {navLinks.map((l) => (
+        <a href={l.href} class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors">
+          {l.label}
+        </a>
+      ))}
+      <a
+        href={WA_LINK}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="px-4 py-2 rounded-lg bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold transition-colors"
+      >
+        Solicitar Orçamento Grátis
+      </a>
+    </nav>
+
+    <button
+      class="md:hidden p-2 rounded-md text-zinc-400"
+      aria-label="Abrir menu"
+      aria-expanded="false"
+      id="menu-toggle"
+    >
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="md:hidden hidden border-t border-zinc-800 bg-zinc-950/95 backdrop-blur-md px-5 py-4 flex-col gap-3" id="mobile-menu">
+    {navLinks.map((l) => (
+      <a href={l.href} class="text-sm text-zinc-300 py-1 mobile-link">{l.label}</a>
+    ))}
+    <a
+      href={WA_LINK}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mt-2 px-4 py-2.5 rounded-lg bg-purple-600 text-white text-sm font-semibold text-center"
+    >
+      Solicitar Orçamento Grátis
+    </a>
+  </div>
+</header>
+
+<script is:inline>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const header = document.getElementById('site-header');
+
+  toggle?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+
+  document.querySelectorAll('.mobile-link').forEach((el) => {
+    el.addEventListener('click', () => menu?.classList.add('hidden'));
+  });
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      header?.classList.add('bg-zinc-950/90', 'backdrop-blur-md', 'border-b', 'border-zinc-800/60');
+    } else {
+      header?.classList.remove('bg-zinc-950/90', 'backdrop-blur-md', 'border-b', 'border-zinc-800/60');
+    }
+  });
+</script>

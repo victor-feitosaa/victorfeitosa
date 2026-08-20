@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import 'tailwindcss';
+
+/* Configuração do Tema (Substitui o tailwind.config.js) */
+@theme inline {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --color-background: #09090b;
+  --color-foreground: #f4f4f5;
+  --color-card: #111113;
+  --color-card-foreground: #f4f4f5;
+  --color-primary: #a855f7;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #18181b;
+  --color-secondary-foreground: #a1a1aa;
+  --color-muted: #18181b;
+  --color-muted-foreground: #71717a;
+  --color-accent: #a855f7;
+  --color-accent-foreground: #ffffff;
+  --color-border: #27272a;
+  --color-ring: #a855f7;
+  
+  --radius: 0.75rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #27272a;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3f3f46;
+  }
+}
+
+@layer components {
+  .section-label {
+    @apply inline-block px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/5 text-purple-400 text-xs font-semibold tracking-widest uppercase mb-4;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border border-zinc-700 bg-zinc-900 text-zinc-300;
+  }
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold transition-all hover:scale-105 shadow-lg shadow-purple-600/25;
+  }
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-zinc-700 hover:border-zinc-500 text-zinc-200 font-medium transition-all hover:bg-zinc-800/50;
+  }
+  .card {
+    @apply rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6 hover:border-purple-500/30 hover:bg-zinc-900/70 transition-all;
+  }
+}

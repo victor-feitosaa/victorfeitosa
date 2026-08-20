@@ -1,0 +1,47 @@
+---
+import FadeIn from './FadeIn.astro';
+import { Scale, Stethoscope, Brain, Calculator, Building2, Ruler, Briefcase, Wrench } from '@lucide/astro';
+
+const segments = [
+  { icon: 'Scale', label: 'Escritórios de Advocacia' },
+  { icon: 'Stethoscope', label: 'Clínicas Odontológicas' },
+  { icon: 'Brain', label: 'Psicólogos' },
+  { icon: 'Calculator', label: 'Contadores' },
+  { icon: 'Building2', label: 'Imobiliárias' },
+  { icon: 'Ruler', label: 'Arquitetos' },
+  { icon: 'Briefcase', label: 'Consultorias' },
+  { icon: 'Wrench', label: 'Prestadores de Serviços' },
+];
+
+const IconMap = { Scale, Stethoscope, Brain, Calculator, Building2, Ruler, Briefcase, Wrench };
+---
+
+<section class="py-24 border-t border-zinc-800/50">
+  <div class="max-w-6xl mx-auto px-5">
+    <FadeIn>
+      <div class="text-center mb-12">
+        <span class="section-label">Segmentos</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-100 mt-2">
+          Desenvolvido para o Seu Segmento
+        </h2>
+        <p class="mt-4 text-zinc-400 max-w-xl mx-auto">
+          Conheço as necessidades e expectativas de cada mercado para criar a presença digital ideal.
+        </p>
+      </div>
+    </FadeIn>
+
+    <FadeIn delay={120}>
+      <div class="flex flex-wrap justify-center gap-3">
+        {segments.map((s) => {
+          const Icon = IconMap[s.icon as keyof typeof IconMap];
+          return (
+            <div class="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-zinc-800 bg-zinc-900/40 text-sm text-zinc-300 hover:border-purple-500/30 hover:bg-zinc-800/60 transition-all cursor-default">
+              <Icon class="text-purple-400" size={18} />
+              <span>{s.label}</span>
+            </div>
+          );
+        })}
+      </div>
+    </FadeIn>
+  </div>
+</section>

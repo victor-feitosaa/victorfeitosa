@@ -1,0 +1,41 @@
+---
+interface Props {
+  delay?: number;
+  class?: string;
+}
+const { delay = 0, class: className = '' } = Astro.props;
+---
+
+<div class={`fade-in ${className}`} style={`transition-delay: ${delay}ms`}>
+  <slot />
+</div>
+
+<style is:inline>
+  .fade-in {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<!-- SEM "is:inline". Isso garante que o script rode apenas 1 vez na página inteira -->
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // Para de observar após animar
+        }
+      });
+    },
+    { threshold: 0.08 }
+  );
+
+  // Observa TODOS os elementos com a classe .fade-in de uma só vez
+  document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+</script>

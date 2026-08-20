@@ -1,0 +1,43 @@
+---
+import FadeIn from './FadeIn.astro';
+import { Smartphone, Snail, TrendingDown, Palette } from '@lucide/astro';
+
+const painPoints = [
+  { icon: 'Smartphone', title: 'Depende apenas do Instagram', desc: 'Não é encontrado no Google e perde clientes para concorrentes com presença digital.' },
+  { icon: 'Snail', title: 'Site antigo e lento', desc: 'Não funciona bem no celular, demora para carregar e afugenta visitantes antes de converter.' },
+  { icon: 'TrendingDown', title: 'Poucos leads qualificados', desc: 'Recebe poucas mensagens e não tem estrutura digital que converta visitas em clientes.' },
+  { icon: 'Palette', title: 'Falta profissionalismo', desc: 'A apresentação digital não transmite confiança para atrair clientes premium.' },
+];
+
+const IconMap = { Smartphone, Snail, TrendingDown, Palette };
+---
+
+<section class="py-24 border-t border-zinc-800/50">
+  <div class="max-w-6xl mx-auto px-5">
+    <FadeIn>
+      <div class="text-center mb-14">
+        <span class="section-label">Identificação</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-100 mt-2">
+          Seu negócio enfrenta algum desses desafios?
+        </h2>
+      </div>
+    </FadeIn>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 h-full">
+      {painPoints.map((p, i) => {
+        const Icon = IconMap[p.icon as keyof typeof IconMap];
+        return (
+          <FadeIn delay={i * 80}>
+            <article class="card h-full flex flex-col">
+              <div class="mb-4">
+                <Icon class="text-purple-400" size={28} />
+              </div>
+              <h3 class="font-semibold text-zinc-200 mb-2 leading-snug">{p.title}</h3>
+              <p class="text-sm text-zinc-500 leading-relaxed mt-auto">{p.desc}</p>
+            </article>
+          </FadeIn>
+        );
+      })}
+    </div>
+  </div>
+</section>
