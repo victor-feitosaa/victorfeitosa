@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react';
 
-const WA_LINK = 'https://wa.me/5500000000000';
+const WA_LINK = 'https://wa.me/556899423231?text=Olá! Gostaria de solicitar um orçamento.';
 
 const segmentOptions = [
   'Advocacia / Direito',
