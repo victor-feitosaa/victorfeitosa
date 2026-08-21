@@ -68,44 +68,60 @@ const WA_LINK = 'https://wa.me/556899423231?text=Olá! Gostaria de solicitar um 
       </FadeIn>
     </div>
 
+    <!-- Lado direito com imagem e elementos animados -->
     <FadeIn delay={200}>
       <div class="relative flex justify-center items-center">
-        <div class="relative w-full max-w-sm mx-auto">
-          <div class="rounded-2xl border border-zinc-700/60 bg-zinc-900/80 backdrop-blur p-3 shadow-2xl shadow-black/60">
-            <div class="flex items-center gap-1.5 mb-3">
-              <span class="w-2.5 h-2.5 rounded-full bg-red-500/70" />
-              <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
-              <span class="w-2.5 h-2.5 rounded-full bg-purple-500/70" />
-              <div class="flex-1 ml-2 h-5 rounded-md bg-zinc-800 flex items-center px-2">
-                <span class="text-[10px] text-zinc-500 font-mono">seusite.com.br</span>
+        <!-- Imagem principal do Unsplash -->
+        <div class="relative w-full max-w-lg">
+          <div class="relative rounded-2xl overflow-hidden border border-zinc-700/60 shadow-2xl shadow-black/60">
+            <img 
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" 
+              alt="Dashboard analytics" 
+              fetchpriority="high"
+              class="w-full h-auto object-cover"
+            />
+            <!-- Overlay gradiente -->
+            <div class="absolute inset-0 bg-gradient-to-tr from-purple-600/20 to-transparent pointer-events-none" />
+          </div>
+
+          <!-- Card flutuante 1 - Estatísticas -->
+          <div class="absolute -top-6 -left-6 bg-zinc-900/95 backdrop-blur-md border border-zinc-700 rounded-xl p-4 shadow-2xl animate-[float_6s_ease-in-out_infinite]">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                </svg>
               </div>
-            </div>
-            <div class="rounded-lg bg-zinc-950 overflow-hidden aspect-[16/10] flex flex-col">
-              <div class="bg-zinc-900 h-8 flex items-center px-4 gap-4 border-b border-zinc-800">
-                <div class="w-12 h-2 rounded bg-zinc-600" />
-                <div class="w-8 h-2 rounded bg-zinc-700" />
-                <div class="w-10 h-2 rounded bg-zinc-700" />
-                <div class="ml-auto w-16 h-5 rounded-md bg-purple-600/50" />
-              </div>
-              <div class="flex-1 p-4 flex flex-col gap-3">
-                <div class="w-3/4 h-4 rounded bg-zinc-700" />
-                <div class="w-1/2 h-3 rounded bg-zinc-800" />
-                <div class="w-2/3 h-3 rounded bg-zinc-800" />
-                <div class="mt-2 flex gap-2">
-                  <div class="w-20 h-7 rounded-lg bg-purple-600/60" />
-                  <div class="w-16 h-7 rounded-lg bg-zinc-800" />
-                </div>
-                <div class="mt-auto grid grid-cols-3 gap-2">
-                  {[1, 2, 3].map((i) => <div key={i} class="rounded-lg bg-zinc-800/80 aspect-square" />)}
-                </div>
+              <div>
+                <div class="text-xs text-zinc-400">Conversões</div>
+                <div class="text-lg font-bold text-zinc-100">+127%</div>
               </div>
             </div>
           </div>
-          <div class="absolute -top-4 -left-4 bg-zinc-900 border border-zinc-700 rounded-xl px-3 py-2 shadow-xl flex items-center gap-2">
-            <span class="text-purple-400 text-lg font-bold">98</span>
-            <div>
-              <div class="text-[10px] text-zinc-300 font-semibold leading-none">Performance</div>
-              <div class="text-[9px] text-zinc-500">Google PageSpeed</div>
+
+          <!-- Card flutuante 2 - Leads -->
+          <div class="absolute -bottom-4 -right-4 bg-zinc-900/95 backdrop-blur-md border border-zinc-700 rounded-xl p-4 shadow-2xl animate-[float_7s_ease-in-out_infinite_1s]">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="text-xs text-zinc-400">Novos Leads</div>
+                <div class="text-lg font-bold text-zinc-100">+48 hoje</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Badge de Performance -->
+          <div class="absolute top-1/2 -right-6 bg-zinc-900/95 backdrop-blur-md border border-zinc-700 rounded-xl px-4 py-3 shadow-2xl animate-[float_5s_ease-in-out_infinite_0.5s]">
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span class="text-sm font-semibold text-zinc-200">Site Online</span>
             </div>
           </div>
         </div>
@@ -113,3 +129,14 @@ const WA_LINK = 'https://wa.me/556899423231?text=Olá! Gostaria de solicitar um 
     </FadeIn>
   </div>
 </section>
+
+<style is:inline>
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+</style>

@@ -1,19 +1,51 @@
 ---
 import FadeIn from './FadeIn.astro';
-import { ExternalLink } from '@lucide/astro';
+import { ExternalLink, ChevronLeft, ChevronRight } from '@lucide/astro';
 
 const projects = [
   {
-    title: "Interface de Matrícula",
-    description: "Matrículas para instituições de ensino e escolha de cursos, ofertas etc.",
-    image: "/assets/interface.webp",
-    tags: ["JavaScript", "Tailwind", "API"],
-    github: "https://github.com/victor-feitosaa/interface-de-matricula",
-    live: "https://interface-de-matricula.vercel.app/localidadesMult.html"
+    title: "ContábilPro",
+    description: "Landing page de alta conversão para captação de clientes de contabilidade, com foco em abertura de empresa, consultoria tributária e integração com WhatsApp.",
+    image: "/assets/cont-site.webp",
+    tags: ["Astro", "Tailwind CSS", "SEO Técnico"],
+    github: "https://github.com/victor-feitosaa/template-contabilidade", 
+    live: "https://contabilidadevictorfeitosa.vercel.app" 
+  },
+  {
+    title: "Sorrir Odonto",
+    description: "Site institucional moderno e acolhedor para clínicas odontológicas, destacando tratamentos, equipe especializada e agendamento simplificado.",
+    image: "/assets/odonto-site.webp",
+    tags: ["Astro", "Tailwind CSS", "Performance 100/100"],
+    github: "https://github.com/victor-feitosaa/template-odontologia",
+    live: "https://odontologiavictorfeitosa.vercel.app"
+  },
+  {
+    title: "Menezes Advocacia",
+    description: "Página de captura profissional para escritórios de advocacia, com ênfase em áreas de atuação, autoridade do advogado e formulário de contato seguro (LGPD).",
+    image: "/assets/adv-site.webp",
+    tags: ["Astro", "Tailwind CSS", "Acessibilidade"],
+    github: "https://github.com/victor-feitosaa/template-advocacia",
+    live: "https://advocaciavictorfeitosa.vercel.app"
+  },
+  {
+    title: "Dra. Camila - Psicóloga",
+    description: "Ambiente minimalista e transmitindo confiança para psicólogos e terapeutas, facilitando o agendamento de consultas online e presenciais.",
+    image: "/assets/psi-site.webp",
+    tags: ["Astro", "Tailwind CSS", "Design Minimalista"],
+    github: "https://github.com/victor-feitosaa/template-psicologia",
+    live: "https://psicologiavictorfeitosa.vercel.app"
+  },
+  {
+    title: "Dra. Luana - Nutricionista",
+    description: "Site profissional e acolhedor para nutricionistas, com foco em agendamento de consultas, planos alimentares e autoridade no nicho de saúde e bem-estar.",
+    image: "/assets/nutri-site.webp",
+    tags: ["Astro", "Tailwind CSS", "Agendamento Online"],
+    github: "https://github.com/victor-feitosaa/template-nutricionista",
+    live: "https://nutricionistavictorfeitosa.vercel.app"
   },
   {
     title: "Kambordados",
-    description: "Landing page personalizada para artista Kambordados expor seus trabalhos e entrarem em contato com a mesma.",
+    description: "Landing page personalizada para artista expor seus trabalhos de bordado e facilitar o contato direto com clientes potenciais.",
     image: "/assets/kambordados.webp",
     tags: ["React", "Tailwind", "Figma"],
     github: "https://github.com/victor-feitosaa/kambordados",
@@ -22,90 +54,233 @@ const projects = [
 ];
 ---
 
-<section id="portfolio" class="py-24 border-t border-zinc-800/50">
-  <div class="max-w-6xl mx-auto px-5">
+<section id="portfolio" class="py-24 border-t border-zinc-800/50 bg-zinc-950/30 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5">
     
-    <!-- Cabeçalho da Seção (estilo original) -->
+    <!-- Cabeçalho da Seção -->
     <FadeIn>
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-14">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-16">
         <div>
-          <span class="section-label">Portfólio</span>
+          <span class="text-xs font-mono text-purple-400 font-semibold tracking-widest uppercase">Portfólio</span>
           <h2 class="text-3xl sm:text-4xl font-bold text-zinc-100 mt-2">Projetos Recentes</h2>
         </div>
         <a
           href="https://github.com/victor-feitosaa"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center gap-2 text-sm text-zinc-400 hover:text-zinc-200 transition-colors"
+          class="flex items-center gap-2 text-sm text-zinc-400 hover:text-zinc-200 transition-colors group"
         >
-          <img src="/assets/github.webp" alt="GitHub" class="w-4 h-4" />
+          <img src="/assets/github.webp" alt="GitHub" class="w-4 h-4 group-hover:brightness-125 transition-all" />
           Ver todos no GitHub
         </a>
       </div>
     </FadeIn>
 
-    <!-- Grid de Cards -->
-    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-      {projects.map((project, i) => (
-        <FadeIn delay={i * 100}>
-          <article class="group bg-zinc-900 border border-zinc-700 rounded-2xl shadow-lg flex flex-col justify-between  transition-transform duration-300 h-full">
-            
-            <!-- Área da Imagem do Projeto (altura aumentada) -->
-            <div class="relative bg-purple-600/10 w-full flex justify-center items-center p-4 rounded-t-2xl h-72 overflow-hidden">
-              <img
-                src={project.image}
-                alt={project.title}
-                loading="lazy"
-                class="h-full w-full object-cover rounded-lg shadow-md group-hover:scale-105 transition-transform duration-300"
-              />
-            </div>
+    <!-- Container do Carrossel 3D -->
+    <FadeIn delay={100}>
+      <div class="relative group/carousel w-full" style="perspective: 1000px;">
+        
+        <!-- Área dos Slides -->
+        <div id="portfolio-track" class="relative w-full h-[650px] lg:h-[520px] mx-auto max-w-5xl">
+          {projects.map((project, i) => (
+            <article 
+              class="portfolio-slide absolute inset-0 flex flex-col lg:flex-row gap-8 lg:gap-12 items-center p-6 lg:p-8 transition-all duration-500 ease-out will-change-transform rounded-2xl border"
+              data-index={i}
+            >
+              
+              <!-- Lado Esquerdo: Texto, Tags e Links -->
+              <div class="flex-1 w-full order-2 lg:order-1 text-center lg:text-left">
+                <div class="flex flex-wrap gap-2 mb-4 justify-center lg:justify-start">
+                  {project.tags.map((tag) => (
+                    <span class="px-3 py-1 rounded-full bg-zinc-800/80 border border-zinc-700 text-xs text-zinc-300 font-medium">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                
+                <h3 class="text-2xl sm:text-3xl font-bold text-zinc-100 mb-4">{project.title}</h3>
+                <p class="text-zinc-400 text-base leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">{project.description}</p>
+                
+                <div class="flex flex-wrap gap-4 justify-center lg:justify-start pointer-events-auto">
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold transition-all shadow-lg shadow-purple-600/20 hover:shadow-purple-600/40 hover:-translate-y-0.5"
+                  >
+                    <ExternalLink size={16} />
+                    Ver Projeto Ao Vivo
+                  </a>
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-sm font-semibold transition-all border border-zinc-700 hover:border-zinc-600 hover:-translate-y-0.5"
+                  >
+                    <img src="/assets/github.webp" alt="GitHub" class="w-5 h-5" />
+                    Ver Código
+                  </a>
+                </div>
+              </div>
 
-            <!-- Tecnologias -->
-            <div class="flex flex-wrap gap-2 mt-4 px-5">
-              {project.tags.map((tag) => (
-                <span class="px-2.5 py-1 rounded-md bg-zinc-800 border border-zinc-700 text-xs text-zinc-300 font-medium">
-                  {tag}
-                </span>
-              ))}
-            </div>
+              <!-- Lado Direito: Imagem do Site -->
+              <div class="flex-1 w-full order-1 lg:order-2 pointer-events-none">
+                <div class="relative bg-zinc-900 border border-zinc-700 rounded-xl overflow-hidden shadow-2xl shadow-black/50">
+                  <!-- Mockup de navegador -->
+                  <div class="h-8 bg-zinc-800 border-b border-zinc-700 flex items-center px-4 gap-2">
+                    <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
+                  </div>
+                  <img
+                    src={project.image}
+                    alt={`Preview do projeto: ${project.title}`}
+                    loading="lazy"
+                    class="w-full h-auto object-cover aspect-video"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/60 to-transparent pointer-events-none"></div>
+                </div>
+              </div>
 
-            <!-- Título e Descrição -->
-            <div class="p-5 flex-1">
-              <h3 class="text-xl font-bold text-zinc-100">{project.title}</h3>
-              <p class="text-zinc-400 mt-2 text-sm leading-relaxed">{project.description}</p>
-            </div>
+            </article>
+          ))}
+        </div>
 
-            <!-- Divisória -->
-            <hr class="mx-5 border-zinc-700" />
+        <!-- Botões de Navegação -->
+        <button 
+          id="prev-btn"
+          class="absolute left-0 lg:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-zinc-800/90 border border-zinc-700 text-zinc-300 flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all hover:bg-purple-600 hover:border-purple-500 hover:text-white focus:opacity-100 z-50 backdrop-blur-sm"
+          aria-label="Projeto anterior"
+        >
+          <ChevronLeft size={24} />
+        </button>
+        
+        <button 
+          id="next-btn"
+          class="absolute right-0 lg:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-zinc-800/90 border border-zinc-700 text-zinc-300 flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all hover:bg-purple-600 hover:border-purple-500 hover:text-white focus:opacity-100 z-50 backdrop-blur-sm"
+          aria-label="Próximo projeto"
+        >
+          <ChevronRight size={24} />
+        </button>
 
-            <!-- Botões de Ação -->
-            <div class="w-full flex gap-3 my-4 px-5 pb-5">
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-sm font-medium transition-colors border border-zinc-700 hover:border-zinc-600"
-              >
-                <img src="/assets/github.webp" alt="GitHub" class="w-5 h-5" />
-                Código
-              </a>
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white text-sm font-medium transition-colors shadow-lg shadow-purple-600/20"
-              >
-                <ExternalLink size={16} />
-                Ver Projeto
-              </a>
-            </div>
+        <!-- Indicadores (Dots) -->
+        <div class="flex justify-center gap-2 mt-8">
+          {projects.map((_, i) => (
+            <button
+              class="portfolio-dot w-2.5 h-2.5 rounded-full transition-all duration-300 bg-zinc-700 hover:bg-zinc-500"
+              data-index={i}
+              aria-label={`Ir para projeto ${i + 1}`}
+            ></button>
+          ))}
+        </div>
 
-          </article>
-        </FadeIn>
-      ))}
-    </div>
-
-
+      </div>
+    </FadeIn>
 
   </div>
 </section>
+
+<script>
+  const track = document.getElementById('portfolio-track');
+  const slides = document.querySelectorAll('.portfolio-slide');
+  const dots = document.querySelectorAll('.portfolio-dot');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  
+  let currentIndex = 0;
+  const totalSlides = slides.length;
+
+  function updateCarousel() {
+    slides.forEach((slide, i) => {
+      // Calcula a distância relativa considerando o loop circular
+      let diff = i - currentIndex;
+      if (diff > Math.floor(totalSlides / 2)) diff -= totalSlides;
+      if (diff < -Math.floor(totalSlides / 2)) diff += totalSlides;
+
+      // Reset básico de classes (remove todas as variações de estado)
+      slide.className = 'portfolio-slide absolute inset-0 flex flex-col lg:flex-row gap-8 lg:gap-12 items-center p-6 lg:p-8 transition-all duration-500 ease-out will-change-transform rounded-2xl border';
+
+      if (diff === 0) {
+        // SLIDE CENTRAL (ATIVO) - Fundo sólido escuro para máxima legibilidade
+        slide.classList.add('z-30', 'opacity-100', 'scale-100', 'translate-x-0', 'bg-zinc-950', 'border-zinc-800', 'shadow-2xl');
+        slide.style.filter = 'none';
+        slide.style.pointerEvents = 'auto';
+      } else if (diff === -1 || diff === totalSlides - 1) {
+        // SLIDE À ESQUERDA (ANTERIOR) - Transparente e desfocado
+        slide.classList.add('z-20', 'opacity-30', 'scale-85', '-translate-x-4', 'lg:-translate-x-1/4', 'bg-zinc-900/50', 'border-zinc-800/30');
+        slide.style.filter = 'blur(2px) brightness(0.6)';
+        slide.style.pointerEvents = 'none';
+      } else if (diff === 1 || diff === -(totalSlides - 1)) {
+        // SLIDE À DIREITA (PRÓXIMO) - Transparente e desfocado
+        slide.classList.add('z-20', 'opacity-30', 'scale-85', 'translate-x-4', 'lg:translate-x-1/4', 'bg-zinc-900/50', 'border-zinc-800/30');
+        slide.style.filter = 'blur(2px) brightness(0.6)';
+        slide.style.pointerEvents = 'none';
+      } else {
+        // SLIDES ESCONDIDOS (MUITO ATRÁS)
+        slide.classList.add('z-10', 'opacity-0', 'scale-70', 'translate-x-0', 'bg-zinc-900/0', 'border-transparent');
+        slide.style.filter = 'blur(4px) brightness(0.4)';
+        slide.style.pointerEvents = 'none';
+      }
+    });
+
+    // Atualiza os dots
+    dots.forEach((dot, index) => {
+      if (index === currentIndex) {
+        dot.classList.remove('bg-zinc-700', 'hover:bg-zinc-500', 'w-2.5', 'h-2.5');
+        dot.classList.add('bg-purple-600', 'w-8', 'h-2.5');
+      } else {
+        dot.classList.remove('bg-purple-600', 'w-8', 'h-2.5');
+        dot.classList.add('bg-zinc-700', 'hover:bg-zinc-500', 'w-2.5', 'h-2.5');
+      }
+    });
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateCarousel();
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateCarousel();
+  }
+
+  // Event Listeners
+  nextBtn?.addEventListener('click', () => { nextSlide(); resetInterval(); });
+  prevBtn?.addEventListener('click', () => { prevSlide(); resetInterval(); });
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      currentIndex = parseInt(dot.getAttribute('data-index') || '0');
+      updateCarousel();
+      resetInterval();
+    });
+  });
+
+  // Auto-play
+  let autoPlay = setInterval(nextSlide, 5000);
+  function resetInterval() {
+    clearInterval(autoPlay);
+    autoPlay = setInterval(nextSlide, 5000);
+  }
+  
+  track.addEventListener('mouseenter', () => clearInterval(autoPlay));
+  track.addEventListener('mouseleave', () => resetInterval());
+
+  // Suporte a swipe em mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  track.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  track.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    if (touchStartX - touchEndX > 50) { nextSlide(); resetInterval(); } // Swipe left
+    if (touchEndX - touchStartX > 50) { prevSlide(); resetInterval(); } // Swipe right
+  }, { passive: true });
+
+  // Inicializa o carrossel no estado correto
+  updateCarousel();
+</script>
