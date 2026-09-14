@@ -1,142 +1,220 @@
 ---
 import FadeIn from './FadeIn.astro';
+import { 
+  MessageCircle, 
+  ArrowRight, 
+  Zap, 
+  Smartphone, 
+  Search, 
+  CheckCircle2, 
+  TrendingUp 
+} from '@lucide/astro';
+
 const WA_LINK = 'https://wa.me/556899423231?text=Olá! Gostaria de solicitar um orçamento.';
 ---
 
-<section id="hero" class="relative min-h-screen flex items-center overflow-hidden pt-16">
-  <div class="absolute inset-0 opacity-[0.03]"
-       style="background-image: linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px); background-size: 60px 60px;" />
-  <div class="absolute inset-0 pointer-events-none">
-    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/3 w-[700px] h-[700px] rounded-full opacity-10"
-         style="background: radial-gradient(circle, #a855f7 0%, transparent 70%)" />
+<section id="hero-section" class="relative min-h-screen flex items-center overflow-hidden pt-16 bg-zinc-950">
+  <!-- 1. Fundo Mesh Gradient Animado (Vibe React Bits) -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-0 -left-4 w-96 h-96 bg-purple-600 rounded-full mix-blend-screen filter blur-[128px] opacity-40 animate-blob" />
+    <div class="absolute top-0 -right-4 w-96 h-96 bg-indigo-600 rounded-full mix-blend-screen filter blur-[128px] opacity-40 animate-blob animation-delay-2000" />
+    <div class="absolute -bottom-8 left-20 w-96 h-96 bg-emerald-600 rounded-full mix-blend-screen filter blur-[128px] opacity-30 animate-blob animation-delay-4000" />
   </div>
 
-  <div class="relative max-w-6xl mx-auto px-5 py-24 grid md:grid-cols-2 gap-16 items-center w-full">
-    <div>
+  <!-- 2. Textura de Ruído (Noise) para acabamento premium -->
+  <div class="absolute inset-0 opacity-[0.03] pointer-events-none" 
+       style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');" />
+
+  <!-- 3. Spotlight Interativo (Segue o mouse) -->
+  <div id="mouse-spotlight" 
+       class="absolute inset-0 opacity-0 transition-opacity duration-500 pointer-events-none" 
+       style="background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%), rgba(168, 85, 247, 0.15), transparent 40%);" />
+
+  <div class="relative max-w-7xl mx-auto px-5 py-24 grid lg:grid-cols-2 gap-16 items-center w-full">
+    
+    <!-- Lado Esquerdo: Copy e CTAs -->
+    <div class="space-y-8">
       <FadeIn>
-        <div class="flex items-center gap-2 mb-6">
-          <span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
-          <span class="text-xs text-purple-400 font-mono font-medium tracking-wider uppercase">
-            Disponível para novos projetos
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 backdrop-blur-sm">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+          </span>
+          <span class="text-xs text-purple-300 font-medium tracking-wider uppercase">
+            Agenda aberta para novos projetos
           </span>
         </div>
       </FadeIn>
 
       <FadeIn delay={80}>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-zinc-100 leading-[1.1] tracking-tight mb-6">
-          Transforme visitantes em <span class="text-purple-400">clientes</span> com um site de alta conversão.
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-zinc-50 leading-[1.1] tracking-tight">
+          Transforme visitantes em <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">clientes</span> com um site de alta conversão.
         </h1>
       </FadeIn>
 
       <FadeIn delay={160}>
-        <p class="text-lg text-zinc-400 leading-relaxed mb-8 max-w-lg">
-          Seu negócio merece mais do que apenas um Instagram. Desenvolvo
-          <strong class="text-zinc-200 font-medium"> Landing Pages</strong> e
-          <strong class="text-zinc-200 font-medium"> Sites Institucionais</strong> rápidos,
-          otimizados para o Google e projetados para gerar leads direto no seu WhatsApp.
+        <p class="text-lg text-zinc-400 leading-relaxed max-w-lg">
+          Seu negócio merece mais do que apenas um Instagram. Desenvolvo 
+          <strong class="text-zinc-200 font-medium"> Landing Pages</strong> e 
+          <strong class="text-zinc-200 font-medium"> Sites Institucionais </strong> 
+          ultrarrápidos, otimizados para o Google e projetados para gerar leads direto no seu WhatsApp.
         </p>
       </FadeIn>
 
       <FadeIn delay={240}>
-        <div class="flex flex-wrap gap-3">
-          <a href={WA_LINK} target="_blank" rel="noopener noreferrer" class="btn-primary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        <div class="flex flex-wrap gap-4">
+          <a href={WA_LINK} 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="group inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-500 text-white font-semibold px-6 py-3.5 rounded-xl transition-all duration-300 shadow-lg shadow-purple-600/25 hover:shadow-purple-600/40 hover:-translate-y-0.5">
+            <MessageCircle size={20} class="group-hover:scale-110 transition-transform" />
             Quero um Site Profissional
           </a>
-          <a href="#portfolio" class="btn-outline">
+          <a href="#portfolio" 
+             class="group inline-flex items-center gap-2 bg-zinc-900 hover:bg-zinc-800 text-zinc-300 font-medium px-6 py-3.5 rounded-xl border border-zinc-800 hover:border-zinc-700 transition-all duration-300 hover:-translate-y-0.5">
             Ver Projetos
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            <ArrowRight size={18} class="group-hover:translate-x-1 transition-transform" />
           </a>
         </div>
       </FadeIn>
 
       <FadeIn delay={320}>
-        <div class="mt-10 flex flex-wrap gap-6 text-sm text-zinc-500">
-          <span class="flex items-center gap-1.5">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            Entrega em 7 dias
-          </span>
-          <span class="flex items-center gap-1.5">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-            100% Responsivo
-          </span>
-          <span class="flex items-center gap-1.5">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            SEO Otimizado
-          </span>
+        <div class="flex flex-wrap gap-6 pt-4 border-t border-zinc-800/50">
+          <div class="flex items-center gap-2 text-sm text-zinc-400">
+            <Zap size={16} class="text-purple-400" />
+            <span>Entrega em 7 dias</span>
+          </div>
+          <div class="flex items-center gap-2 text-sm text-zinc-400">
+            <Smartphone size={16} class="text-purple-400" />
+            <span>100% Responsivo</span>
+          </div>
+          <div class="flex items-center gap-2 text-sm text-zinc-400">
+            <Search size={16} class="text-purple-400" />
+            <span>SEO Otimizado</span>
+          </div>
         </div>
       </FadeIn>
     </div>
 
-    <!-- Lado direito com imagem e elementos animados -->
+    <!-- Lado Direito: Visual Interativo (CSS-only Glassmorphic Mockup) -->
     <FadeIn delay={200}>
-      <div class="relative flex justify-center items-center">
-        <!-- Imagem principal do Unsplash -->
-        <div class="relative w-full max-w-lg">
-          <div class="relative rounded-2xl overflow-hidden border border-zinc-700/60 shadow-2xl shadow-black/60">
-            <img 
-              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" 
-              alt="Dashboard analytics" 
-              fetchpriority="high"
-              class="w-full h-auto object-cover"
-            />
-            <!-- Overlay gradiente -->
-            <div class="absolute inset-0 bg-gradient-to-tr from-purple-600/20 to-transparent pointer-events-none" />
+      <div class="relative flex justify-center items-center perspective-1000">
+        <!-- Efeito de brilho traseiro -->
+        <div class="absolute -inset-4 bg-gradient-to-r from-purple-600/20 to-indigo-600/20 rounded-3xl blur-3xl opacity-50 animate-pulse" />
+        
+        <!-- Janela do Navegador (CSS Puro) -->
+        <div class="group relative w-full max-w-lg bg-zinc-900/60 backdrop-blur-2xl border border-white/10 rounded-2xl p-6 shadow-2xl shadow-black/50 transform transition-transform duration-500 hover:rotate-y-2 hover:rotate-x-2">
+          
+          <!-- Header Fake -->
+          <div class="flex items-center gap-2 mb-6 border-b border-white/5 pb-4">
+            <div class="w-3 h-3 rounded-full bg-red-500/80" />
+            <div class="w-3 h-3 rounded-full bg-yellow-500/80" />
+            <div class="w-3 h-3 rounded-full bg-green-500/80" />
+            <div class="ml-4 flex-1 h-7 bg-white/5 rounded-lg flex items-center px-3 border border-white/5">
+              <span class="text-[11px] text-zinc-500 font-mono">seunegocio.com.br</span>
+            </div>
           </div>
 
-          <!-- Card flutuante 1 - Estatísticas -->
-          <div class="absolute -top-6 -left-6 bg-zinc-900/95 backdrop-blur-md border border-zinc-700 rounded-xl p-4 shadow-2xl animate-[float_6s_ease-in-out_infinite]">
+          <!-- Conteúdo Abstrato: Gráfico de Crescimento -->
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-xs text-zinc-500 uppercase tracking-wider font-medium">Conversões Mensais</div>
+                <div class="text-2xl font-bold text-zinc-100 flex items-center gap-2">
+                  +248%
+                  <TrendingUp size={20} class="text-emerald-400" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Barras do Gráfico Animadas -->
+            <div class="flex items-end justify-between gap-2 h-32 pt-4">
+              <div class="w-full bg-purple-500/20 rounded-t-md h-[30%] animate-[grow_1s_ease-out_forwards]" style="animation-delay: 0.1s" />
+              <div class="w-full bg-purple-500/30 rounded-t-md h-[45%] animate-[grow_1s_ease-out_forwards]" style="animation-delay: 0.2s" />
+              <div class="w-full bg-purple-500/40 rounded-t-md h-[35%] animate-[grow_1s_ease-out_forwards]" style="animation-delay: 0.3s" />
+              <div class="w-full bg-purple-500/50 rounded-t-md h-[60%] animate-[grow_1s_ease-out_forwards]" style="animation-delay: 0.4s" />
+              <div class="w-full bg-purple-500/70 rounded-t-md h-[50%] animate-[grow_1s_ease-out_forwards]" style="animation-delay: 0.5s" />
+              <div class="w-full bg-gradient-to-t from-purple-600 to-indigo-500 rounded-t-md h-[85%] animate-[grow_1s_ease-out_forwards] shadow-[0_0_20px_rgba(168,85,247,0.4)] relative" style="animation-delay: 0.6s">
+                <!-- Ponto de destaque no topo da barra -->
+                <div class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-white rounded-full shadow-lg" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Notificação Flutuante (Toast) -->
+          <div class="absolute -right-6 top-1/3 bg-zinc-800/90 backdrop-blur-xl border border-emerald-500/30 rounded-xl p-4 shadow-2xl animate-[slideIn_0.6s_cubic-bezier(0.16,1,0.3,1)_forwards_1.2s] opacity-0 translate-x-8">
             <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2">
-                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                </svg>
+              <div class="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
+                <CheckCircle2 size={20} />
               </div>
               <div>
-                <div class="text-xs text-zinc-400">Conversões</div>
-                <div class="text-lg font-bold text-zinc-100">+127%</div>
+                <div class="text-xs text-zinc-400 font-medium">Novo Lead Capturado</div>
+                <div class="text-sm font-bold text-zinc-100">+1 Contato no WhatsApp</div>
+                <div class="text-[10px] text-zinc-500 mt-0.5">Agora mesmo</div>
               </div>
             </div>
           </div>
 
-          <!-- Card flutuante 2 - Leads -->
-          <div class="absolute -bottom-4 -right-4 bg-zinc-900/95 backdrop-blur-md border border-zinc-700 rounded-xl p-4 shadow-2xl animate-[float_7s_ease-in-out_infinite_1s]">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="9" cy="7" r="4"></circle>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                </svg>
-              </div>
-              <div>
-                <div class="text-xs text-zinc-400">Novos Leads</div>
-                <div class="text-lg font-bold text-zinc-100">+48 hoje</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Badge de Performance -->
-          <div class="absolute top-1/2 -right-6 bg-zinc-900/95 backdrop-blur-md border border-zinc-700 rounded-xl px-4 py-3 shadow-2xl animate-[float_5s_ease-in-out_infinite_0.5s]">
-            <div class="flex items-center gap-2">
-              <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span class="text-sm font-semibold text-zinc-200">Site Online</span>
-            </div>
-          </div>
         </div>
       </div>
     </FadeIn>
   </div>
+
+  <!-- Script ultra-leve para o efeito de Spotlight (Mouse Tracking) -->
+  <script>
+    const hero = document.getElementById('hero-section');
+    const spotlight = document.getElementById('mouse-spotlight');
+    
+    if (hero && spotlight) {
+      hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        spotlight.style.setProperty('--x', `${x}px`);
+        spotlight.style.setProperty('--y', `${y}px`);
+        spotlight.style.opacity = '1';
+      });
+      
+      hero.addEventListener('mouseleave', () => {
+        spotlight.style.opacity = '0';
+      });
+    }
+  </script>
 </section>
 
 <style is:inline>
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
+  /* Animações personalizadas para substituir dependências de JS */
+  @keyframes blob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+  }
+  
+  .animate-blob {
+    animation: blob 10s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  @keyframes grow {
+    from { transform: scaleY(0); transform-origin: bottom; }
+    to { transform: scaleY(1); transform-origin: bottom; }
+  }
+
+  @keyframes slideIn {
+    from { 
+      opacity: 0; 
+      transform: translateX(2rem) translateY(0); 
     }
-    50% {
-      transform: translateY(-20px);
+    to { 
+      opacity: 1; 
+      transform: translateX(0) translateY(0); 
     }
   }
 </style>
